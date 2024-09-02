@@ -18,11 +18,15 @@ This CodeLab exercise is designed to help you practice the concepts you have lea
 
 ### 2. Set up the development environment (one per team of 2 x 2)
 
-1. One team member should create a new github repository and make everybody else collaborators on the repo.
-2. Then create a new maven project with a [Hibernate Config file](https://gist.github.com/tysker/74eac7ad0dc0d52c3af8e87907d487e7) and the appropriate [pom.xml](https://gist.github.com/tysker/312d237728d58c84533aae6cad661307 dependencies for using with JPA.
-3. Create a new branch: `develop` and Protect the `main` branch and the `develop` branch from pushing directly to it. Only allow Pull Requests to merge into these branches.
-4. Every team member should clone the new repository to their local machine
-5. Checkout the develop branch (each member)
+
+1. **ONE** team member should clone the following GitHub repository: `git clone -b code-lab-3 https://github.com/tysker/3sem-codelab-exercises.git`.
+2. Delete the `.git` folder in the project folder.
+3. Create a new GitHub repository and push the project to the new repository.
+4. Make everybody else collaborators on the repo.
+5. Then create a new maven project with a [Hibernate Config file](https://gist.github.com/tysker/74eac7ad0dc0d52c3af8e87907d487e7) and the appropriate [pom.xml](https://gist.github.com/tysker/312d237728d58c84533aae6cad661307) dependencies for using with JPA. 
+6. Create a new branch: `develop` and Protect the `main` branch and the `develop` branch from pushing directly to it. Only allow Pull Requests to merge into these branches. 
+7. Every team member should clone the new repository to their local machine 
+8. Checkout the develop branch (each member)
 
 ### 3. Connecting to the database
 
