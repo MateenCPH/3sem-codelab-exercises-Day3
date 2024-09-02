@@ -5,15 +5,15 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TeacherDao {
+public class StudentDaoImpl {
 
-    private static TeacherDao instance;
+    private static StudentDaoImpl instance;
     private static EntityManagerFactory emf;
 
-    public static TeacherDao getInstance(EntityManagerFactory _emf) {
+    public static StudentDaoImpl getInstance(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new TeacherDao();
+            instance = new StudentDaoImpl();
         }
         return instance;
     }
