@@ -1,10 +1,9 @@
 package dk.cph.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
+
 
 @Entity
 @Table(name = "teachers")
@@ -26,11 +25,5 @@ public class Teacher {
 
     @Column(name = "zoom", unique = true)
     private String zoom;
-
-    public Teacher(String name, String email, String zoom) {
-        this.name = name;
-        this.email = email;
-        this.zoom = zoom;
-    }
 
 }

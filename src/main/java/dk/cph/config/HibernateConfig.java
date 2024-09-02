@@ -1,7 +1,5 @@
 package dk.cph.config;
 
-import dk.cph.model.Course;
-import dk.cph.model.Student;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
@@ -20,9 +18,9 @@ public class HibernateConfig {
 
             Properties props = new Properties();
 
-            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/school?currentSchema=public");
-            props.put("hibernate.connection.username", "postgres");
-            props.put("hibernate.connection.password", "postgres");
+            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/db?currentSchema=public");
+            props.put("hibernate.connection.username", "");
+            props.put("hibernate.connection.password", "");
             props.put("hibernate.show_sql", "true"); // show sql in console
             props.put("hibernate.format_sql", "true"); // format sql in console
             props.put("hibernate.use_sql_comments", "true"); // show sql comments in console
@@ -73,8 +71,7 @@ public class HibernateConfig {
     }
 
     private static void getAnnotationConfiguration(Configuration configuration) {
-        configuration.addAnnotatedClass(Student.class);
-        configuration.addAnnotatedClass(Course.class);
+
     }
 
     public static EntityManagerFactory getEntityManagerFactory(boolean isTest) {
