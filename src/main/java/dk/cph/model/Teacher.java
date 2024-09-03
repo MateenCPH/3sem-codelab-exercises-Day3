@@ -9,8 +9,8 @@ import lombok.*;
 @Table(name = "teachers")
 @NoArgsConstructor
 @Getter
-@Setter
 @ToString
+@NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {
 
     @Id

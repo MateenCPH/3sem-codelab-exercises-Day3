@@ -19,14 +19,13 @@ import java.time.LocalDateTime;
 public class Student {
 
     @Id
+    @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Setter
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Setter
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
@@ -37,7 +36,5 @@ public class Student {
     @Setter(AccessLevel.NONE)
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
-
 
 }
