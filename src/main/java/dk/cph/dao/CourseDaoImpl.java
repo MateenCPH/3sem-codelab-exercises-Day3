@@ -18,7 +18,7 @@ import java.util.Set;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CourseDaoImpl implements GenericDAO<Student, Integer> {
+public class CourseDaoImpl implements GenericDAO<Course, Integer> {
 
     private static CourseDaoImpl instance;
     private static EntityManagerFactory emf;
@@ -80,12 +80,12 @@ public class CourseDaoImpl implements GenericDAO<Student, Integer> {
     }
 
     @Override
-    public Student findEntity(Integer id) {
+    public Course findEntity(Integer id) {
         return null;
     }
 
     @Override
-    public Student updateEntity(Student entity, Integer id) {
+    public Course updateEntity(Course entity, Integer id) {
         return null;
     }
 }
