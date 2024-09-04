@@ -1,5 +1,8 @@
 package dk.cph.config;
 
+import dk.cph.model.Course;
+import dk.cph.model.Student;
+import dk.cph.model.Teacher;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -32,7 +35,9 @@ public class HibernateConfig {
     }
     // TODO: IMPORTANT: Add Entity classes here for them to be registered with Hibernate
     private static void getAnnotationConfiguration(Configuration configuration) {
-        //Add classes here
+        configuration.addAnnotatedClass(Teacher.class);
+        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Course.class);
 
     }
 
