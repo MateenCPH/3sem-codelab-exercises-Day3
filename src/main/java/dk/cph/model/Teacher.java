@@ -8,8 +8,12 @@ import lombok.*;
 @Entity
 @Table(name = "teachers")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Setter
 @ToString
+@Builder
+@EqualsAndHashCode
 @NamedQuery(name = "Teacher.deleteAll", query = "DELETE FROM Teacher")
 public class Teacher {
 

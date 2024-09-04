@@ -8,15 +8,18 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "students")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@Builder
+@EqualsAndHashCode
 @NamedQueries({
         @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
         @NamedQuery(name = "Student.findByEmail", query = "SELECT s FROM Student s WHERE s.email = :email"),
         @NamedQuery(name = "Student.deleteAll", query = "DELETE FROM Student")
 })
-public class Student {
+public class Student{
 
     @Id
     @Setter(AccessLevel.NONE)
