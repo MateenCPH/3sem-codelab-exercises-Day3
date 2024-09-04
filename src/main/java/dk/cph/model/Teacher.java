@@ -3,6 +3,8 @@ package dk.cph.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -20,6 +22,9 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.PERSIST)
+    private Set<Course> courses = new HashSet<>();
 
     @Column(name = "name", nullable = false)
     private String name;

@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -16,11 +18,18 @@ import java.time.LocalDate;
 @ToString
 @Builder
 @EqualsAndHashCode
+
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
+    private Teacher teacher;
+
+    @ManyToMany
+    private Set<Student> students = new HashSet<>();
 
     @Column(name = "description", nullable = false)
     private String description;
