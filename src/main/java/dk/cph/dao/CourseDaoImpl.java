@@ -1,14 +1,20 @@
 package dk.cph.dao;
 
+import dk.cph.enums.CourseName;
+import dk.cph.model.Course;
 import dk.cph.model.Student;
 import dk.cph.model.Teacher;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -26,30 +32,43 @@ public class CourseDaoImpl implements GenericDAO<Student, Integer> {
     }
 
     @Override
-    public List<Student> findAll() {
+    public List<Course> findAll() {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
-            List<Student> students = em.createQuery("SELECT s FROM Student s", Student.class).getResultList();
-            if (students.isEmpty()) {
-                Student s1 = Student.builder()
-                        .name("John Doe")
-                        .email("john@doe.com")
-                        .createdAt(LocalDateTime.now())
+            List<Course> courses = em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
+            if (courses.isEmpty()) {
+                Course c1 = Course.builder()
+                        .description("Java")
+                        .courseName(CourseName.HISTORY)
+                        .startDate(LocalDate.now())
+                        .endDate(LocalDate.of(2035,12,31))
                         .build();
-                persistEntity(s1);
-                students.add(s1);
-                return students;
+                persistEntity(c1);
+                courses.add(c1);
+                return courses;
             }
-            em.getTransaction().commit();
-            return students;
+            return courses;
         }
     }
 
     @Override
-    public void persistEntity(Student entity) {
+    public void persistEntity(Course course) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
-            em.persist(entity);
+            Address address = emp.getAddress();
+            if (address != null) {
+                String street = address.getStreet();
+                TypedQuery<Address> query = em.createQuery("SELECT a FROM Address a WHERE a.street = :street", Address.class);
+                query.setParameter("street", street);
+
+                try {
+                    Address found = query.getSingleResult();
+                    emp.setAddress(found);
+                } catch (NoResultException e) {
+                    em.persist(address);
+                }
+            }
+            em.persist(emp);
             em.getTransaction().commit();
         }
 
