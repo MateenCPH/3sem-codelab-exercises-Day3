@@ -32,6 +32,7 @@ public class HibernateConfig {
     }
     // TODO: IMPORTANT: Add Entity classes here for them to be registered with Hibernate
     private static void getAnnotationConfiguration(Configuration configuration) {
+        //Add classes here
 
     }
 
@@ -66,7 +67,7 @@ public class HibernateConfig {
 
     private static String getDBName() {
         //return Utils.getPropertyValue("db.name", "properties-from-pom.properties");
-        return "codeLabDay3DB";
+        return "university";
     }
     private static Properties setBaseProperties(Properties props){
         props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
