@@ -2,6 +2,7 @@ package dk.cph.dao;
 
 import dk.cph.model.Course;
 import dk.cph.model.Teacher;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,11 @@ public class TeacherDaoImpl implements GenericDAO<Teacher, Integer>{
 
     @Override
     public void persistEntity(Teacher entity) {
-
+        try(EntityManager em = emf.createEntityManager()) {
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+        }
     }
 
     @Override
